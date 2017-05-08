@@ -19,6 +19,7 @@ public class Earthquake {
 
         /** Image resource ID for the word */
 
+
         public Earthquake(String cintensity , String clocation , long ctime , String cu) {
 
             intensity = cintensity;
@@ -28,7 +29,7 @@ public class Earthquake {
         }
 
     public String getIntensity() { return intensity; }
-    public String getU() {return u;}
+    public String getUrl() {return u;}
     public long getTime() {
         return time;
     }

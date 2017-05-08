@@ -1,30 +1,24 @@
 package com.example.android.quakereport;
 
 import android.app.Activity;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import java.util.ArrayList;
-
-import static android.R.attr.format;
-import static android.R.attr.format24Hour;
-import static com.example.android.quakereport.R.id.intensity;
-import static java.lang.Float.parseFloat;
-import android.graphics.drawable.GradientDrawable;
 /**
  * Created by Dell on 07-04-2017.
  */
 
-public class WordList extends ArrayAdapter<Earthquake> {
+public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
-    public WordList(Activity context, ArrayList<Earthquake>earthquakes ) {
+    public EarthquakeAdapter(Activity context, ArrayList<Earthquake>earthquakes ) {
         super(context ,  0 , earthquakes);
     }
 
@@ -33,7 +27,7 @@ public class WordList extends ArrayAdapter<Earthquake> {
        View listItemView = currentView ;
        if(listItemView == null ) {
 
-           listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_rss,parent,false);
+           listItemView = LayoutInflater.from(getContext()).inflate(R.layout.earthquake_list_item,parent,false);
 
        }
        Earthquake currentwordfile = getItem(position);

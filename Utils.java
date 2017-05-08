@@ -7,10 +7,6 @@ package com.example.android.quakereport;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +15,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,8 +29,10 @@ public final class Utils {
     /**
      * Query the USGS dataset and return an {@link Earthquake} object to represent a single earthquake.
      */
-    public static ArrayList<Earthquake> fetchEarthquakeData(String requestUrl) {
+    public static List<Earthquake> fetchEarthquakeData(String requestUrl) {
         // Create URL object
+
+
         URL url = createUrl(requestUrl);
 
         // Perform HTTP request to the URL and receive a JSON response back
@@ -47,7 +44,7 @@ public final class Utils {
         }
 
         // Extract relevant fields from the JSON response and create an {@link Event} object
-        ArrayList<Earthquake> earthquake = extractFeatureFromJson(jsonResponse);
+     List<Earthquake> earthquake = extractFeatureFromJson(jsonResponse);
 
         // Return the {@link Event}
         return earthquake;
@@ -129,13 +126,13 @@ public final class Utils {
      * Return an {@link Earthquake} object by parsing out information
      * about the first earthquake from the input earthquakeJSON string.
      */
-    private static ArrayList<Earthquake> extractFeatureFromJson(String earthquakeJSON) {
+    private static List<Earthquake> extractFeatureFromJson(String earthquakeJSON) {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(earthquakeJSON)) {
             return null;
         }
 
-        ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes(earthquakeJSON);
+        List<Earthquake> earthquakes = QueryUtils.extractEarthquakes(earthquakeJSON);
         return earthquakes;
     }
 }
